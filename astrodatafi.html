@@ -34,25 +34,9 @@
     </style>
 </head>
 <body>
-    <div class="widget" id="quote-widget"></div>
     <div class="widget" id="astro-widget"></div> <!-- New div for astrological data -->
 
     <script>
-        quotes = [
-            // Your quotes here
-        ];
-
-        const INTERVAL = 86400000; // 24 hours in milliseconds
-
-        function displayQuote() {
-            document.getElementById('quote-widget').innerHTML = quotes[0];
-            quotes.forEach((quote, i) => {
-                setTimeout(() => {
-                    document.getElementById('quote-widget').innerHTML = quote;
-                }, i * INTERVAL);
-            });
-        }
-
         function fetchAstrologicalData() {
             // Fetch astrological data from the specified URL
             fetch("https://horoscopes.astro-seek.com/current-planets-astrology-transits-planetary-positions")
@@ -101,7 +85,6 @@
         }
 
         function displayWidget() {
-            displayQuote(); // Initial display of quotes
             updateDataAtMidnight(); // Schedule astrological data update
         }
 
