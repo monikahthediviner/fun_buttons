@@ -54,7 +54,26 @@
         }
 
         function fetchAstrologicalData() {
-            // Code to fetch astrological data (as shown in previous responses)
+            // Fetch astrological data from the specified URL
+            fetch("https://horoscopes.astro-seek.com/current-planets-astrology-transits-planetary-positions")
+                .then(response => response.text())
+                .then(data => {
+                    // Extract the relevant data from the fetched content
+                    const astroData = parseAstrologicalData(data);
+
+                    // Display the astrological data in the "astro-widget" div
+                    document.getElementById('astro-widget').innerHTML = astroData;
+                })
+                .catch(error => {
+                    console.error("Error fetching astrological data:", error);
+                });
+        }
+
+        function parseAstrologicalData(data) {
+            // Implement the logic to parse the data from the website here
+            // You may use regular expressions or other methods to extract the required information.
+            // For simplicity, I'm using a placeholder text.
+            return "Astrological data goes here.";
         }
 
         function updateDataAtMidnight() {
