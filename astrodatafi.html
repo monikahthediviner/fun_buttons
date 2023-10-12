@@ -1,94 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astrological Data</title>
+<div class="container">
+    <div class="widget">
+        <!-- Your existing widget content goes here -->
 
-    <style>
-        .widget {
-            padding: 5px 5px;
-            color: #516901;
-            text-align: center;
-            max-width: 95%;
-            margin: auto;
-            font-variant-caps: petite-caps;
-            font-size: 2em;
-        }
+        <!-- Add a new section for astrological information -->
+        <div class="astro-info" id="astro-info">
+            <h2>Planetary Positions:</h2>
+            <ul id="planetary-positions">
+                <!-- Data will be dynamically added here -->
+            </ul>
 
-        div {
-            width: 95%;
-            min-height: 100px;
-            background:
-                linear-gradient(to right, black 4px, transparent 4px) 0 0,
-                linear-gradient(to right, black 4px, transparent 4px) 0 100%,
-                linear-gradient(to left, black 4px, transparent 4px) 100% 0,
-                linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
-                linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
-                linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
-                linear-gradient(to top, black 4px, transparent 4px) 0 100%,
-                linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
-            background-repeat: no-repeat;
-            background-size: 20px 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="widget" id="astro-widget"></div> <!-- New div for astrological data -->
+            <h2>Lunar Phases:</h2>
+            <ul id="lunar-phases">
+                <!-- Data will be dynamically added here -->
+            </ul>
 
-    <script>
-        function fetchAstrologicalData() {
-            // Fetch astrological data from the specified URL
-            fetch("https://horoscopes.astro-seek.com/current-planets-astrology-transits-planetary-positions")
-                .then(response => response.text())
-                .then(data => {
-                    // Extract the relevant data from the fetched content
-                    const astroData = parseAstrologicalData(data);
+            <h2>Special Celestial Events:</h2>
+            <ul id="celestial-events">
+                <!-- Data will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="widget">
+        <!-- Your existing widget content goes here -->
 
-                    // Display the astrological data in the "astro-widget" div
-                    document.getElementById('astro-widget').innerHTML = astroData;
-                })
-                .catch(error => {
-                    console.error("Error fetching astrological data:", error);
-                });
-        }
+        <!-- Add a new section for astrological information -->
+        <div class="astro-info" id="astro-info">
+            <h2>Planetary Positions:</h2>
+            <ul id="planetary-positions">
+                <!-- Data will be dynamically added here -->
+            </ul>
 
-        function parseAstrologicalData(data) {
-            // Implement the logic to parse the data from the website here
-            // You may use regular expressions or other methods to extract the required information.
-            // For simplicity, I'm using a placeholder text.
-            return "Astrological data goes here.";
-        }
+            <h2>Lunar Phases:</h2>
+            <ul id="lunar-phases">
+                <!-- Data will be dynamically added here -->
+            </ul>
 
-        function updateDataAtMidnight() {
-            // Calculate the time until the next midnight
-            const now = new Date();
-            const midnight = new Date(
-                now.getFullYear(),
-                now.getMonth(),
-                now.getDate() + 1, // Set to the next day
-                0, // Hours
-                0, // Minutes
-                0 // Seconds
-            );
-
-            // Calculate the time difference until the next midnight
-            const timeUntilMidnight = midnight - now;
-
-            // Call the function at midnight
-            setTimeout(function () {
-                fetchAstrologicalData();
-
-                // Set up a recurring update every 24 hours
-                setInterval(fetchAstrologicalData, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
-            }, timeUntilMidnight);
-        }
-
-        function displayWidget() {
-            updateDataAtMidnight(); // Schedule astrological data update
-        }
-
-        displayWidget();
-    </script>
-</body>
-</html>
+            <h2>Special Celestial Events:</h2>
+            <ul id="celestial-events">
+                <!-- Data will be dynamically added here -->
+            </ul>
+        </div>
+    </div>
+</div>
