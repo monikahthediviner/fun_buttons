@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrological Data</title>
+
+    <style>
+        .widget {
+            padding: 5px 5px;
+            color: #516901;
+            text-align: center;
+            max-width: 95%;
+            margin: auto;
+            font-variant-caps: petite-caps;
+            font-size: 2em;
+        }
+
+        div {
+            width: 95%;
+            min-height: 100px;
+            background:
+                linear-gradient(to right, black 4px, transparent 4px) 0 0,
+                linear-gradient(to right, black 4px, transparent 4px) 0 100%,
+                linear-gradient(to left, black 4px, transparent 4px) 100% 0,
+                linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
+                linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
+                linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
+                linear-gradient(to top, black 4px, transparent 4px) 0 100%,
+                linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="widget" id="quote-widget"></div>
+    <div class="widget" id="astro-widget"></div> <!-- New div for astrological data -->
+
+    <script>
+        quotes = [
+            // Your quotes here
+        ];
+
+        const INTERVAL = 86400000; // 24 hours in milliseconds
+
+        function displayQuote() {
+            document.getElementById('quote-widget').innerHTML = quotes[0];
+            quotes.forEach((quote, i) => {
+                setTimeout(() => {
+                    document.getElementById('quote-widget').innerHTML = quote;
+                }, i * INTERVAL);
+            });
+        }
+
+        function fetchAstrologicalData() {
+            // Code to fetch astrological data (as shown in previous responses)
+        }
+
+        function updateDataAtMidnight() {
+            // Calculate the time until the next midnight
+            const now = new Date();
+            const midnight = new Date(
+                now.getFullYear(),
+                now.getMonth(),
+                now.getDate() + 1, // Set to the next day
+                0, // Hours
+                0, // Minutes
+                0 // Seconds
+            );
+
+            // Calculate the time difference until the next midnight
+            const timeUntilMidnight = midnight - now;
+
+            // Call the function at midnight
+            setTimeout(function () {
+                fetchAstrologicalData();
+
+                // Set up a recurring update every 24 hours
+                setInterval(fetchAstrologicalData, 24 * 60 * 60 * 1000); // 24 hours in milliseconds
+            }, timeUntilMidnight);
+        }
+
+        function displayWidget() {
+            displayQuote(); // Initial display of quotes
+            updateDataAtMidnight(); // Schedule astrological data update
+        }
+
+        displayWidget();
+    </script>
+</body>
+</html>
